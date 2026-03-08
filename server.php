@@ -1,6 +1,6 @@
 <?php
 // server.php - RMIS サーバー
-// 使い方: php server.php  または  rmis.exe (micro.sfx + phar)
+// 使い方: php server.php  または  test.exe (micro.sfx + phar)
 //
 // PHAR/micro.sfx 実行時はソケットベースの組み込みHTTPサーバーで動作する。
 // 通常のPHP CLIから実行した場合は php -S (組み込みサーバー) を使う。

@@ -4,8 +4,8 @@
 //
 // 生成された app.phar は以下のいずれかの方法で実行できる:
 //   1) php app.phar                           (PHP がインストール済みの環境)
-//   2) copy /b micro.sfx + app.phar rmis.exe  (Windows 単一バイナリ)
-//   3) cat micro.sfx app.phar > rmis && chmod +x rmis  (macOS/Linux 単一バイナリ)
+//   2) copy /b micro.sfx + app.phar test.exe  (Windows 単一バイナリ)
+//   3) cat micro.sfx app.phar > test && chmod +x test  (macOS/Linux 単一バイナリ)
 
 $distDir  = __DIR__ . '/dist';
 $pharFile = $distDir . '/app.phar';
@@ -40,7 +40,7 @@ echo "== 実行方法 ==\n";
 echo "  php dist/app.phar\n";
 echo "\n";
 echo "== Windows exe 作成 (micro.sfx が必要) ==\n";
-echo "  copy /b micro.sfx + dist\\app.phar dist\\rmis.exe\n";
+echo "  copy /b micro.sfx + dist\\app.phar dist\\test.exe\n";
 echo "\n";
 echo "== macOS/Linux バイナリ作成 (micro.sfx が必要) ==\n";
-echo "  cat micro.sfx dist/app.phar > dist/rmis && chmod +x dist/rmis\n";
+echo "  cat micro.sfx dist/app.phar > dist/test && chmod +x dist/test\n";

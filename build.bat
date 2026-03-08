@@ -43,7 +43,7 @@ if exist "%SCRIPT_DIR%micro.sfx" (
 
 echo --- exe 作成 ---
 echo micro.sfx: %MICRO_SFX%
-copy /b "%MICRO_SFX%" + "%DIST_DIR%\app.phar" "%DIST_DIR%\rmis.exe" >nul
+copy /b "%MICRO_SFX%" + "%DIST_DIR%\app.phar" "%DIST_DIR%\test.exe" >nul
 if errorlevel 1 (
     echo exe 作成に失敗しました
     pause
@@ -51,11 +51,11 @@ if errorlevel 1 (
 )
 
 echo.
-echo ✅ %DIST_DIR%\rmis.exe 作成完了
+echo ✅ %DIST_DIR%\test.exe 作成完了
 echo.
 echo === 完了 ===
 echo 作成されたファイル:
-dir "%DIST_DIR%\rmis.exe"
+dir "%DIST_DIR%\test.exe"
 echo.
-echo rmis.exe をダブルクリックで実行できます。
+echo test.exe をダブルクリックで実行できます。
 pause
