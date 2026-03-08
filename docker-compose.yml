@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: docker/apache/Dockerfile
+    container_name: rmis-web
+    ports:
+      - "8080:80"
+      - "443:443"
+    volumes:
+      - ./src:/var/www/html
+      - ./docker/apache/sites-available:/etc/apache2/sites-available
+      - ./data:/var/www/data
+    environment:
+      SQLITE_DB_PATH: /var/www/data/rmis.sqlite
+    restart: unless-stopped

@@ -1,0 +1,38 @@
+# Docker
+mysql-data/
+
+# FrankenPHP
+frankenphp
+frankenphp-*
+
+# Build outputs
+dist/
+*.phar
+
+# PHP runtime binary (ユーザーが各自ダウンロード)
+micro.sfx
+micro_win.zip
+
+# SQLite database
+# data/*.sqlite
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Composer
+/vendor/
+
+# Environment
+.env
+.env.local
+.env.*.local
