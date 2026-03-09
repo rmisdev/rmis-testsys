@@ -187,3 +187,8 @@ cat micro.sfx dist/app.phar > dist/test && chmod +x dist/test
 - テーブルと初期データは初回アクセス時に自動作成されます
 - exe 作成には **spc-max** ビルドの `micro.sfx` が必要です（`pdo_sqlite` 拡張が必要なため）
 - Windows Defender ファイアウォールの警告が出る場合があります（ローカルサーバーのため）
+
+### Windows スマートアプリコントロール / SmartScreen の警告について
+
+生成された `rmis.exe` はコード署名されていないため、Windows 11 の **スマートアプリコントロール（Smart App Control）** や **Microsoft Defender SmartScreen** がブロックする場合があります。
+

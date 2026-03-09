@@ -50,6 +50,15 @@ if errorlevel 1 (
     exit /b 1
 )
 
+REM --- Step 3: Mark of the Web (MOTW) 除去 ---
+echo --- MOTW 除去 ---
+powershell -Command "Unblock-File -Path '%DIST_DIR%\test.exe'" 2>nul
+if errorlevel 0 (
+    echo Zone.Identifier を除去しました
+) else (
+    echo ⚠  MOTW 除去をスキップしました（PowerShell が利用できません）
+)
+
 echo.
 echo ✅ %DIST_DIR%\test.exe 作成完了
 echo.
@@ -58,4 +67,8 @@ echo 作成されたファイル:
 dir "%DIST_DIR%\test.exe"
 echo.
 echo test.exe をダブルクリックで実行できます。
+echo.
+echo ⚠  スマートアプリコントロールがブロックする場合は、
+echo    micro.sfx にも Unblock-File を実行してから再ビルドしてください:
+echo    powershell -Command "Unblock-File -Path 'micro.sfx'"
 pause
