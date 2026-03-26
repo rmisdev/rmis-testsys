@@ -67,6 +67,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // POST後リダイレクト（二重送信防止）— メッセージはクエリパラメータで渡す
     $qs = http_build_query(['msg' => $message, 'type' => $messageType]);
+    if (defined('RMIS_SOCKET_SERVER') && RMIS_SOCKET_SERVER) {
+        // ソケットサーバーモード: exit するとサーバーが落ちるため return で抜ける
+        $GLOBALS['_RMIS_REDIRECT'] = "index.php?{$qs}";
+        return;
+    }
     header("Location: index.php?{$qs}");
     exit;
 }

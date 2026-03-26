@@ -43,7 +43,7 @@ if exist "%SCRIPT_DIR%micro.sfx" (
 
 echo --- exe 作成 ---
 echo micro.sfx: %MICRO_SFX%
-copy /b "%MICRO_SFX%" + "%DIST_DIR%\app.phar" "%DIST_DIR%\test.exe" >nul
+copy /b "%MICRO_SFX%" + "%DIST_DIR%\app.phar" "%DIST_DIR%\rmis.exe" >nul
 if errorlevel 1 (
     echo exe 作成に失敗しました
     pause
@@ -52,7 +52,7 @@ if errorlevel 1 (
 
 REM --- Step 3: Mark of the Web (MOTW) 除去 ---
 echo --- MOTW 除去 ---
-powershell -Command "Unblock-File -Path '%DIST_DIR%\test.exe'" 2>nul
+powershell -Command "Unblock-File -Path '%DIST_DIR%\rmis.exe'" 2>nul
 if errorlevel 0 (
     echo Zone.Identifier を除去しました
 ) else (
@@ -60,13 +60,13 @@ if errorlevel 0 (
 )
 
 echo.
-echo ✅ %DIST_DIR%\test.exe 作成完了
+echo ✅ %DIST_DIR%\rmis.exe 作成完了
 echo.
 echo === 完了 ===
 echo 作成されたファイル:
-dir "%DIST_DIR%\test.exe"
+dir "%DIST_DIR%\rmis.exe"
 echo.
-echo test.exe をダブルクリックで実行できます。
+echo rmis.exe をダブルクリックで実行できます。
 echo.
 echo ⚠  スマートアプリコントロールがブロックする場合は、
 echo    micro.sfx にも Unblock-File を実行してから再ビルドしてください:

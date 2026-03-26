@@ -44,7 +44,7 @@ echo "micro.sfx: ${MICRO_SFX}"
 
 # macOS / Linux
 if [[ "$(uname)" != MINGW* && "$(uname)" != CYGWIN* ]]; then
-    OUTPUT="${DIST_DIR}/test"
+    OUTPUT="${DIST_DIR}/rmis"
     cat "${MICRO_SFX}" "${DIST_DIR}/app.phar" > "${OUTPUT}"
     chmod +x "${OUTPUT}"
     echo "✅ ${OUTPUT} 作成完了"

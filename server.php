@@ -262,6 +262,13 @@ function executeIndexPhp(string $docroot, string $method, string $query, string 
     $statusCode = 200;
     $responseHeaders = ['Content-Type: text/html; charset=UTF-8'];
 
+    // ソケットサーバーモードであることを示すフラグ
+    if (!defined('RMIS_SOCKET_SERVER')) {
+        define('RMIS_SOCKET_SERVER', true);
+    }
+    // index.php 側でリダイレクト先をセットするためのグローバル変数
+    $GLOBALS['_RMIS_REDIRECT'] = null;
+
     try {
         // index.php を include (header + exit による POST リダイレクトも処理)
         include $indexFile;
@@ -273,12 +280,14 @@ function executeIndexPhp(string $docroot, string $method, string $query, string 
 
     $output = ob_get_clean();
 
-    // header() で送られたヘッダーを確認
-    $sentHeaders = headers_list();
-    $redirectLocation = null;
-    foreach ($sentHeaders as $h) {
-        if (stripos($h, 'Location:') === 0) {
-            $redirectLocation = trim(substr($h, 9));
+    // リダイレクト先を確認（グローバル変数 or headers_list）
+    $redirectLocation = $GLOBALS['_RMIS_REDIRECT'] ?? null;
+    if ($redirectLocation === null) {
+        $sentHeaders = headers_list();
+        foreach ($sentHeaders as $h) {
+            if (stripos($h, 'Location:') === 0) {
+                $redirectLocation = trim(substr($h, 9));
+            }
         }
     }
 
